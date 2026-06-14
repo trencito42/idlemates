@@ -3,6 +3,10 @@ set -e
 
 npx prisma db push --skip-generate
 
+if [ -n "$BOOTSTRAP_ADMIN_EMAILS" ]; then
+  node scripts/bootstrap-admins.js
+fi
+
 if [ "$APP_ROLE" = "worker" ]; then
   exec npm run worker
 fi

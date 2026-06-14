@@ -36,6 +36,7 @@ COPY --from=builder /idlemates/lib ./lib
 COPY --from=builder /idlemates/types ./types
 COPY --from=builder /idlemates/tsconfig.json ./tsconfig.json
 COPY scripts/start-production.sh ./scripts/start-production.sh
+COPY scripts/bootstrap-admins.js ./scripts/bootstrap-admins.js
 RUN chmod +x ./scripts/start-production.sh
 EXPOSE 3000
 CMD ["./scripts/start-production.sh"]
