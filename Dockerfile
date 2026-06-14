@@ -13,7 +13,6 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV DATABASE_URL=mysql://placeholder:placeholder@127.0.0.1:3306/idlemates
 ENV SHADOW_DATABASE_URL=mysql://placeholder:placeholder@127.0.0.1:3306/idlemates_shadow
-ENV REDIS_URL=redis://127.0.0.1:6379
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npx prisma generate && npm run build
@@ -37,4 +36,4 @@ COPY --from=builder /app/lib ./lib
 COPY --from=builder /app/types ./types
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 EXPOSE 3000
-CMD ["sh","-c","npx prisma migrate deploy && npm run start:web"]
+CMD ["sh","-c","npx prisma db push --skip-generate && npx prisma migrate deploy && npm run start:web"]

@@ -12,6 +12,8 @@ import Script from 'next/script'
 export const dynamic = 'force-dynamic'
 
 async function AnnouncementBar() {
+  if (!process.env.REDIS_URL) return null
+
   try {
     const redis = getRedis()
     const raw = await redis.get('system:settings')

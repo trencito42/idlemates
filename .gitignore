@@ -13,3 +13,4 @@ worker.log
 *.log
 *.zip
 *.sql
+!prisma/migrations/**/*.sql
