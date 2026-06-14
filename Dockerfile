@@ -36,4 +36,4 @@ COPY --from=builder /app/lib ./lib
 COPY --from=builder /app/types ./types
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 EXPOSE 3000
-CMD ["sh","-c","npx prisma migrate deploy && npm run start:web"]
+CMD ["sh","-c","npx prisma db push --skip-generate && npm run start:web"]
