@@ -1,5 +1,5 @@
 import { Worker, Queue } from 'bullmq'
-import { getRedis } from '@/lib/redis'
+import { getRedis, getQueueRedis } from '@/lib/redis'
 import { prisma } from '@/lib/db'
 import { SessionJob, QUEUE_SESSION, QUEUE_HEALTH, defaultJobOpts } from '@/lib/queue'
 import SteamUser from 'steam-user'
@@ -1029,7 +1029,7 @@ async function handleQRLogin(userId: string, sessionId: string) {
 }
 
 async function main() {
-  const connection = getRedis()
+  const connection = getQueueRedis()
   
   new Worker<SessionJob>(QUEUE_SESSION, async job => {
     const { action, userId, steamAccountId, totpCode } = job.data as any

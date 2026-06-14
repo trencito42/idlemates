@@ -1,17 +1,22 @@
 import Redis from 'ioredis'
 
 let redis: Redis | null = null
+let queueRedis: Redis | null = null
+
+function redisUrl() {
+  return process.env.REDIS_URL || 'redis://127.0.0.1:6379'
+}
 
 export function getRedis() {
   if (!redis) {
-    const url = process.env.REDIS_URL || 'redis://127.0.0.1:6379'
-    redis = new Redis(url, {
-      lazyConnect: true,
-      connectTimeout: 1000,
-      maxRetriesPerRequest: 1,
-      enableReadyCheck: false,
-      enableOfflineQueue: false,
-      retryStrategy: () => null,
+    const hasRedisUrl = Boolean(process.env.REDIS_URL)
+    redis = new Redis(redisUrl(), {
+      lazyConnect: !hasRedisUrl,
+      connectTimeout: hasRedisUrl ? 5000 : 1000,
+      maxRetriesPerRequest: hasRedisUrl ? 3 : 1,
+      enableReadyCheck: hasRedisUrl,
+      enableOfflineQueue: hasRedisUrl,
+      retryStrategy: hasRedisUrl ? (times) => Math.min(times * 200, 3000) : () => null,
     })
 
     redis.on('error', () => {
@@ -20,4 +25,18 @@ export function getRedis() {
   }
 
   return redis
+}
+
+/** BullMQ workers require maxRetriesPerRequest: null on the Redis connection. */
+export function getQueueRedis() {
+  if (!queueRedis) {
+    queueRedis = new Redis(redisUrl(), {
+      maxRetriesPerRequest: null,
+      enableReadyCheck: false,
+    })
+
+    queueRedis.on('error', () => {})
+  }
+
+  return queueRedis
 }

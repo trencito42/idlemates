@@ -1,10 +1,10 @@
 import { Queue, Worker, type JobsOptions } from 'bullmq'
-import { getRedis } from './redis'
+import { getQueueRedis } from './redis'
 
 export const QUEUE_SESSION = 'session'
 export const QUEUE_HEALTH = 'health'
 
-const connection = getRedis()
+const connection = getQueueRedis()
 
 export const sessionQueue = new Queue(QUEUE_SESSION, { connection })
 export const healthQueue = new Queue(QUEUE_HEALTH, { connection })
