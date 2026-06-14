@@ -35,5 +35,7 @@ COPY --from=builder /idlemates/src ./src
 COPY --from=builder /idlemates/lib ./lib
 COPY --from=builder /idlemates/types ./types
 COPY --from=builder /idlemates/tsconfig.json ./tsconfig.json
+COPY scripts/start-production.sh ./scripts/start-production.sh
+RUN chmod +x ./scripts/start-production.sh
 EXPOSE 3000
-CMD ["sh","-c","if [ \"$APP_ROLE\" = \"worker\" ]; then npm run worker; else npx prisma db push --skip-generate && npm run start:web; fi"]
+CMD ["./scripts/start-production.sh"]

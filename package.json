@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "start:web": "next start -p ${PORT:-3000}",
+    "start:prod": "sh scripts/start-production.sh",
     "lint": "next lint",
     "studio": "prisma studio --port 5555 --hostname 127.0.0.1",
     "worker": "tsx src/worker/index.ts",

@@ -1,11 +1,17 @@
 # Coolify Deployment
 
-This project runs on Coolify as two application services plus two data services:
+This project runs on Coolify as **one application service** plus two data services:
 
-- `web`: Next.js frontend and API
-- `worker`: BullMQ / Steam worker
+- `web`: Next.js frontend, API, and BullMQ / Steam worker (same container)
 - `mysql`: MySQL 8
 - `redis`: Redis 7
+
+The Docker entrypoint starts the worker in the background and the web server in the foreground. You do not need a second Coolify application.
+
+Optional split mode (only if you really want separate services):
+
+- `APP_ROLE=web` — web only
+- `APP_ROLE=worker` — worker only
 
 ## 1. Prepare the repository
 
@@ -22,15 +28,16 @@ Create these services first inside Coolify:
 
 Keep the generated hostnames, usernames, passwords, and database name.
 
-## 3. Create the `web` application
+## 3. Create the application
 
 Create a new application from your Git repository with these settings:
 
 - Build pack: `Dockerfile`
 - Dockerfile path: `Dockerfile`
 - Port: `3000`
+- Start command: leave empty (Dockerfile `CMD` handles startup)
 
-Environment variables for `web`:
+Environment variables:
 
 ```env
 NODE_ENV=production
@@ -40,7 +47,7 @@ NEXTAUTH_URL=https://your-domain.example
 NEXTAUTH_SECRET=replace-with-a-long-random-secret
 ENCRYPTION_MASTER_KEY=replace-with-a-stable-secret-key
 DATABASE_URL=mysql://USER:PASSWORD@MYSQL_HOST:3306/idlemates
-REDIS_URL=redis://REDIS_HOST:6379
+REDIS_URL=redis://default:PASSWORD@REDIS_HOST:6379/0
 ```
 
 Optional billing variables if used:
@@ -60,56 +67,31 @@ PAYPAL_PLAN_ULTRA=
 
 Notes:
 
-- The container runs `prisma migrate deploy` before starting the web app.
-- Attach your domain to this `web` service, not to the worker.
+- The container runs `prisma db push` before starting web and worker.
+- Attach your domain to this service.
+- `REDIS_URL` is required for QR login, sessions, and rate limiting.
 
-## 4. Create the `worker` application
-
-Create a second application from the same repository.
-
-Use the same settings as `web`, with one change:
-
-- Start command: `npm run worker`
-
-Environment variables for `worker`:
-
-```env
-NODE_ENV=production
-DATABASE_URL=mysql://USER:PASSWORD@MYSQL_HOST:3306/idlemates
-REDIS_URL=redis://REDIS_HOST:6379
-ENCRYPTION_MASTER_KEY=replace-with-the-same-key-used-by-web
-SITE_URL=https://your-domain.example
-NEXTAUTH_URL=https://your-domain.example
-NEXTAUTH_SECRET=replace-with-the-same-secret-used-by-web
-```
-
-If the worker uses billing, mail, or Steam-related env vars in your setup, add the same values here too.
-
-The worker does not need a public domain.
-
-## 5. Import the database
+## 4. Import the database
 
 If you want to restore the backup from `idlemates.sql`, import it into the Coolify MySQL service before switching traffic.
 
 After import, ensure the application user in `DATABASE_URL` can read and write the schema.
 
-## 6. First deployment order
+## 5. First deployment order
 
 Deploy in this order:
 
 1. `mysql`
 2. `redis`
 3. `web`
-4. `worker`
 
-## 7. Health checks
+## 6. Health checks
 
-Recommended checks:
+Recommended check:
 
-- `web`: HTTP check on `/`
-- `worker`: process-only is enough; no public health endpoint exists yet
+- HTTP check on `/`
 
-## 8. Common failures
+## 7. Common failures
 
 ### Build succeeds but app crashes on start
 
@@ -120,9 +102,9 @@ Usually one of these is wrong:
 - `NEXTAUTH_SECRET`
 - `ENCRYPTION_MASTER_KEY`
 
-### Web works but sessions do not start
+### Web works but sessions or QR login do not start
 
-Usually the `worker` service is missing, stopped, or not connected to the same Redis and MySQL instances.
+Usually `REDIS_URL` is missing or wrong. The worker runs in the same container as the web app, so there is no separate worker service to manage.
 
 ### Login or callback URLs are broken
 
