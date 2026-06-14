@@ -36,4 +36,4 @@ COPY --from=builder /idlemates/lib ./lib
 COPY --from=builder /idlemates/types ./types
 COPY --from=builder /idlemates/tsconfig.json ./tsconfig.json
 EXPOSE 3000
-CMD ["sh","-c","npx prisma db push --skip-generate && npm run start:web"]
+CMD ["sh","-c","if [ \"$APP_ROLE\" = \"worker\" ]; then npm run worker; else npx prisma db push --skip-generate && npm run start:web; fi"]
