@@ -7,6 +7,9 @@ RUN npm ci || npm i
 FROM node:20-alpine AS builder
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV DATABASE_URL=mysql://placeholder:placeholder@127.0.0.1:3306/idlemates
+ENV SHADOW_DATABASE_URL=mysql://placeholder:placeholder@127.0.0.1:3306/idlemates_shadow
+ENV REDIS_URL=redis://127.0.0.1:6379
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN npx prisma generate && npm run build
