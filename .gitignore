@@ -1,0 +1,15 @@
+.env
+.env.local
+.env.production
+.env.development
+node_modules/
+.next/
+logs/
+coverage/
+playwright-report/
+test-results/
+tsconfig.tsbuildinfo
+worker.log
+*.log
+*.zip
+*.sql

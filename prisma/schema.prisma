@@ -1,0 +1,310 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "mysql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id                 String               @id @default(cuid())
+  email              String               @unique
+  passwordHash       String
+  dataKeyEnc         String
+  role               Role                 @default(USER)
+  createdAt          DateTime             @default(now())
+  banned             Boolean              @default(false)
+  banReason          String?
+  last2FAAt          DateTime?
+  totpBackupCodesEnc String?              @db.Text
+  totpSecretEnc      String?              @db.Text
+  twoFactorEnabled   Boolean              @default(false)
+  avatarUrl          String?
+  accounts           Account[]
+  sessions           BoostSession[]
+  deviceSessions     DeviceSession[]
+  eventLogs          EventLog[]
+  freeBalance        FreePlanBalance?
+  newsPosts          NewsPost[]           @relation("UserNewsPosts")
+  passwordResets     PasswordResetToken[]
+  payments           Payment[]
+  sessionsAuth       Session[]
+  steamAccounts      SteamAccount[]
+  subscriptions      Subscription[]
+}
+
+model SteamAccount {
+  id                 String         @id @default(cuid())
+  userId             String
+  usernameEnc        String
+  passwordEnc        String
+  sharedSecretEnc    String?        @db.Text
+  status             String         @default("idle")
+  lastLoginAt        DateTime?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  appearOnline       Boolean        @default(true)
+  autoAcceptFriends  Boolean        @default(false)
+  autoRestart        Boolean        @default(false)
+  chatHistory        Boolean        @default(true)
+  customAwayMessage  String?
+  customInGameTitle  String?
+  hideRecentActivity Boolean        @default(false)
+  refreshTokenEnc    String?        @db.Text
+  assignedProxy      String?
+  lastProxyError     String?
+  lastProxyErrorAt   DateTime?
+  proxyAssignedAt    DateTime?
+  proxyFailCount     Int            @default(0)
+  sessions           BoostSession[]
+  chatMessages       ChatMessage[]
+  eventLogs          EventLog[]
+  user               User           @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "SteamAccount_userId_fkey")
+}
+
+model Game {
+  id           String             @id @default(cuid())
+  appId        Int                @unique
+  name         String
+  createdAt    DateTime           @default(now())
+  image        String?
+  sessionGames BoostSessionGame[]
+}
+
+model BoostSession {
+  id              String             @id @default(cuid())
+  userId          String
+  steamAccountId  String
+  status          String             @default("stopped")
+  startedAt       DateTime?
+  pausedAt        DateTime?
+  lastHeartbeatAt DateTime?
+  personaState    PersonaState       @default(Online)
+  customStatus    String?
+  statusMessage   String?
+  steamAccount    SteamAccount       @relation(fields: [steamAccountId], references: [id])
+  user            User               @relation(fields: [userId], references: [id])
+  games           BoostSessionGame[]
+
+  @@index([steamAccountId], map: "BoostSession_steamAccountId_fkey")
+  @@index([userId], map: "BoostSession_userId_fkey")
+}
+
+model BoostSessionGame {
+  id                 String       @id @default(cuid())
+  sessionId          String
+  appId              Int
+  secondsAccumulated Int          @default(0)
+  game               Game         @relation(fields: [appId], references: [appId])
+  session            BoostSession @relation(fields: [sessionId], references: [id])
+
+  @@index([appId], map: "BoostSessionGame_appId_fkey")
+  @@index([sessionId], map: "BoostSessionGame_sessionId_fkey")
+}
+
+model ChatMessage {
+  id             String       @id @default(cuid())
+  steamAccountId String
+  fromSteamId    String
+  message        String       @db.Text
+  timestamp      DateTime     @default(now())
+  isOutbound     Boolean
+  toSteamId      String?
+  steamAccount   SteamAccount @relation(fields: [steamAccountId], references: [id])
+
+  @@index([steamAccountId, timestamp])
+}
+
+model Plan {
+  id                 String         @id @default(cuid())
+  code               String         @unique
+  name               String
+  price              Int
+  paypalPlanId       String?
+  maxConcurrentGames Int
+  hourlyCap          Int
+  featuresJson       String?        @db.Text
+  discountAmount     Int?
+  discountUntil      DateTime?
+  stripePriceId      String?
+  stripeProductId    String?
+  subscriptions      Subscription[]
+}
+
+model Subscription {
+  id                   String    @id @default(cuid())
+  userId               String
+  paypalSubscriptionId String?   @unique
+  planId               String
+  status               String
+  currentPeriodEnd     DateTime
+  createdAt            DateTime  @default(now())
+  hoursUsed            Float     @default(0)
+  stripeCustomerId     String?
+  stripeSubscriptionId String?   @unique
+  payments             Payment[]
+  plan                 Plan      @relation(fields: [planId], references: [id])
+  user                 User      @relation(fields: [userId], references: [id])
+
+  @@index([planId], map: "Subscription_planId_fkey")
+  @@index([userId], map: "Subscription_userId_fkey")
+}
+
+model Payment {
+  id             String        @id @default(cuid())
+  userId         String
+  subscriptionId String?
+  amount         Int
+  currency       String        @default("USD")
+  status         String
+  externalId     String        @unique
+  createdAt      DateTime      @default(now())
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id])
+  user           User          @relation(fields: [userId], references: [id])
+
+  @@index([subscriptionId], map: "Payment_subscriptionId_fkey")
+  @@index([userId], map: "Payment_userId_fkey")
+}
+
+model EventLog {
+  id             String        @id @default(cuid())
+  userId         String?
+  steamAccountId String?
+  type           String
+  json           String        @db.LongText
+  createdAt      DateTime      @default(now())
+  steamAccount   SteamAccount? @relation(fields: [steamAccountId], references: [id])
+  user           User?         @relation(fields: [userId], references: [id])
+
+  @@index([steamAccountId], map: "EventLog_steamAccountId_fkey")
+  @@index([userId], map: "EventLog_userId_fkey")
+}
+
+model WebhookEvent {
+  id        String   @id @default(cuid())
+  source    String
+  eventId   String   @unique
+  payload   String   @db.LongText
+  redacted  Boolean  @default(true)
+  createdAt DateTime @default(now())
+}
+
+model FreePlanBalance {
+  userId    String   @id
+  hoursLeft Int      @default(100)
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String? @db.Text
+  access_token       String? @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String? @db.Text
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+  user               User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId], map: "Account_userId_fkey")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], map: "Session_userId_fkey")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@id([identifier, token])
+}
+
+model DeviceSession {
+  id         String   @id @default(cuid())
+  userId     String
+  deviceId   String
+  userAgent  String
+  ip         String?
+  asn        String?
+  country    String?
+  trusted    Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  lastSeenAt DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, deviceId])
+}
+
+model ProxyHealth {
+  id               String    @id @default(cuid())
+  proxyUrl         String    @unique
+  proxyType        String
+  isHealthy        Boolean   @default(true)
+  successCount     Int       @default(0)
+  failureCount     Int       @default(0)
+  rateLimitedUntil DateTime?
+  lastCheckedAt    DateTime  @default(now())
+  averageLatency   Int?
+  activeAccounts   Int       @default(0)
+  lastProxyError   String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], map: "PasswordResetToken_userId_fkey")
+}
+
+model NewsPost {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  excerpt   String?
+  content   String   @db.Text
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String?
+  author    User?    @relation("UserNewsPosts", fields: [authorId], references: [id])
+
+  @@index([authorId], map: "NewsPost_authorId_fkey")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum PersonaState {
+  Online
+  Offline
+  Invisible
+  Busy
+}

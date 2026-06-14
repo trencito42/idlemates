@@ -1,0 +1,157 @@
+/* Accessibility-optimized color utilities */
+
+/* High contrast text colors */
+.text-high-contrast {
+  color: rgb(255 255 255) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.text-high-contrast-dark {
+  color: rgb(0 0 0) !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+}
+
+/* High contrast backgrounds */
+.bg-high-contrast {
+  background-color: rgb(0 0 0 / 0.9) !important;
+}
+
+.bg-high-contrast-light {
+  background-color: rgb(255 255 255 / 0.95) !important;
+}
+
+/* Enhanced focus states */
+.focus-enhanced:focus {
+  outline: 3px solid rgb(138 92 255) !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(138, 92, 255, 0.3) !important;
+}
+
+/* Button contrast improvements */
+.btn-high-contrast {
+  background-color: rgb(138 92 255) !important;
+  color: rgb(255 255 255) !important;
+  border: 2px solid rgb(138 92 255) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+}
+
+.btn-high-contrast:hover {
+  background-color: rgb(118 72 235) !important;
+  border-color: rgb(118 72 235) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Link contrast improvements */
+.link-high-contrast {
+  color: rgb(178 142 255) !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
+}
+
+.link-high-contrast:hover {
+  color: rgb(198 162 255) !important;
+  text-decoration-thickness: 2px !important;
+}
+
+/* Gradient text with better contrast */
+.gradient-text-accessible {
+  background: linear-gradient(135deg, 
+    rgb(255 255 255) 0%, 
+    rgb(220 220 255) 50%, 
+    rgb(178 142 255) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: none !important;
+  
+  /* Fallback for browsers that don't support background-clip: text */
+}
+
+@supports not (background-clip: text) {
+  .gradient-text-accessible {
+    color: rgb(255 255 255) !important;
+    background: none !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+  }
+}
+
+/* High contrast cards */
+.card-high-contrast {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Ensure minimum touch target size (44x44px) */
+.touch-target {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Skip to content link */
+.skip-to-content {
+  position: absolute !important;
+  top: -40px !important;
+  left: 6px !important;
+  background: rgb(138 92 255) !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  z-index: 9999 !important;
+  transition: top 0.3s !important;
+}
+
+.skip-to-content:focus {
+  top: 6px !important;
+}
+
+/* High contrast mode detection */
+@media (prefers-contrast: high) {
+  * {
+    text-shadow: none !important;
+  }
+  
+  .text-muted {
+    color: rgb(200 200 200) !important;
+  }
+  
+  .bg-gradient-to-br {
+    background: rgb(0 0 0) !important;
+  }
+  
+  .border-border {
+    border-color: rgb(255 255 255) !important;
+  }
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

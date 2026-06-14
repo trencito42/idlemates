@@ -1,0 +1,167 @@
+import Link from 'next/link'
+
+export default function HomePage() {
+  return (
+    <main>
+      {/* Hero */}
+      <section className="container-page py-20 md:py-32">
+        <div className="text-center space-y-8 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm font-medium text-primary mb-4">
+            <i className="fa-duotone fa-circle-dot animate-pulse"></i>
+            Online 24/7 · 100% automat
+          </div>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-gradient-to-br from-fg via-primary to-primary-2 bg-clip-text text-transparent">
+            Ore Steam fără efort
+          </h1>
+          <p className="text-xl text-muted max-w-2xl mx-auto leading-relaxed">
+            Platformă automată pentru acumulare ore Steam. Securitate AES-256, detectare inteligentă a gameplay-ului real și control total asupra sesiunilor tale.
+          </p>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Link href="/auth/register" className="btn text-base px-8 py-3">
+              Începe gratuit →
+            </Link>
+            <Link href="/pricing" className="btn-secondary text-base px-8 py-3">
+              Vezi planuri
+            </Link>
+          </div>
+          <div className="flex items-center justify-center gap-8 text-sm text-muted pt-8">
+            <div className="flex items-center gap-2">
+              <i className="fa-duotone fa-circle-check text-success"></i>
+              100h gratuite
+            </div>
+            <div className="flex items-center gap-2">
+              <i className="fa-duotone fa-circle-check text-success"></i>
+              Fără card
+            </div>
+            <div className="flex items-center gap-2">
+              <i className="fa-duotone fa-circle-check text-success"></i>
+              Anulare instant
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
+      <section className="container-page py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">De ce IdleMates?</h2>
+          <p className="text-muted max-w-2xl mx-auto">Soluția profesională pentru managementul orelor Steam, construită pentru siguranță și performanță.</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            { 
+              icon: 'fa-shield-check', 
+              title: 'Securitate militară', 
+              desc: 'Credențialele tale sunt criptate cu AES-256-GCM. Zero acces la datele tale, zero compromise.' 
+            },
+            { 
+              icon: 'fa-brain-circuit', 
+              title: 'AI smart pause', 
+              desc: 'Detectăm automat când joci real și pausăm idling-ul. Reia automat după ce închizi jocul.' 
+            },
+            { 
+              icon: 'fa-layer-group', 
+              title: 'Până la 32 jocuri', 
+              desc: 'Idlează simultan pe multiple titluri. Scalează cu planul tău: Free 1, Basic 6, Pro 12, Ultra 24.' 
+            },
+            { 
+              icon: 'fa-chart-mixed', 
+              title: 'Dashboard în timp real', 
+              desc: 'Monitorizează fiecare sesiune, vezi progresul orelor și istoricul complet într-un singur loc.' 
+            },
+            { 
+              icon: 'fa-credit-card', 
+              title: 'PayPal nativ', 
+              desc: 'Subscripții prin PayPal cu facturare automată. Anulezi oricând, fără întrebări, fără penalizări.' 
+            },
+            { 
+              icon: 'fa-handshake', 
+              title: 'Fair use garantat', 
+              desc: 'Respectăm ToS Steam și limitele fair-use. Serviciu sustenabil, nu abuz sistemic.' 
+            },
+          ].map((f) => (
+            <div key={f.title} className="card p-6 hover:border-primary/20 transition-colors">
+              <i className={`fa-duotone ${f.icon} text-4xl mb-4 text-primary`}></i>
+              <h3 className="font-semibold text-lg mb-2">{f.title}</h3>
+              <p className="text-muted text-sm leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="container-page py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Cum funcționează?</h2>
+          <p className="text-muted">4 pași simpli pentru ore Steam automate</p>
+        </div>
+        <div className="max-w-3xl mx-auto space-y-6">
+          {[
+            { 
+              step: '01', 
+              title: 'Conectează Steam', 
+              desc: 'Introduci credențialele Steam (criptate instant cu AES-256). Dacă ai 2FA, furnizezi shared_secret sau cod manual.' 
+            },
+            { 
+              step: '02', 
+              title: 'Selectează jocurile', 
+              desc: 'Adaugi titlurile după AppID sau nume. Limita depinde de plan: Free=1, Basic=6, Pro=12, Ultra=24 simultan.' 
+            },
+            { 
+              step: '03', 
+              title: 'Pornește sesiunea', 
+              desc: 'Cu un click, worker-ul nostru se autentifică și începe idling 24/7. Zero intervenție din partea ta.' 
+            },
+            { 
+              step: '04', 
+              title: 'Auto-pause inteligent', 
+              desc: 'Când detectăm că tu joci efectiv, pausăm automat idling-ul. Reluăm după ce închizi jocul.' 
+            },
+          ].map((s) => (
+            <div key={s.step} className="card p-6 flex gap-6 items-start">
+              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center font-bold text-primary">
+                {s.step}
+              </div>
+              <div>
+                <h4 className="font-semibold text-lg mb-1">{s.title}</h4>
+                <p className="text-muted text-sm">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Social proof */}
+      <section className="container-page py-16">
+        <div className="card p-12 text-center">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="text-4xl font-bold mb-2 bg-gradient-to-br from-primary to-primary-2 bg-clip-text text-transparent">2,500+</div>
+              <p className="text-muted text-sm">Useri activi</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2 bg-gradient-to-br from-primary to-primary-2 bg-clip-text text-transparent">50K+</div>
+              <p className="text-muted text-sm">Ore idlate lunar</p>
+            </div>
+            <div>
+              <div className="text-4xl font-bold mb-2 bg-gradient-to-br from-primary to-primary-2 bg-clip-text text-transparent">99.9%</div>
+              <p className="text-muted text-sm">Uptime garantat</p>
+            </div>
+          </div>
+          <p className="text-muted text-sm">Încredere de la comunitatea Steam din România</p>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="container-page py-16">
+        <div className="card p-12 text-center bg-gradient-to-br from-primary/10 to-primary-2/10 border-primary/20">
+          <h2 className="text-3xl font-bold mb-4">Pregătit să începi?</h2>
+          <p className="text-muted mb-8 max-w-xl mx-auto">100 de ore gratuite. Fără card, fără obligații, fără întrebări.</p>
+          <Link href="/auth/register" className="btn text-base px-8 py-3 inline-block">
+            Creează cont gratuit →
+          </Link>
+        </div>
+      </section>
+    </main>
+  )
+}

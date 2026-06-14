@@ -1,0 +1,641 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-Regular.woff') format('woff'),
+       url('/fonts/ProximaNova-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-RegularIt.woff') format('woff'),
+       url('/fonts/ProximaNova-RegularIt.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-Semibold.woff') format('woff'),
+       url('/fonts/ProximaNova-Semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-SemiboldIt.woff') format('woff'),
+       url('/fonts/ProximaNova-SemiboldIt.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-Bold.woff') format('woff'),
+       url('/fonts/ProximaNova-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-BoldIt.woff') format('woff'),
+       url('/fonts/ProximaNova-BoldIt.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-Light.woff') format('woff'),
+       url('/fonts/ProximaNova-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-LightIt.woff') format('woff'),
+       url('/fonts/ProximaNova-LightIt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-Black.woff') format('woff'),
+       url('/fonts/ProximaNova-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/ProximaNova-BlackIt.woff') format('woff'),
+       url('/fonts/ProximaNova-BlackIt.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Import composited animations */
+@import url('../components/ui/CompositeAnimations.css');
+
+/* Import accessibility enhancements */
+@import url('../components/ui/AccessibilityEnhancements.css');
+
+:root {
+  /* Typography */
+  --font-proxima-nova: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  
+  /* Safe area insets */
+  --safe-bottom: env(safe-area-inset-bottom);
+  
+  /* Animation speeds */
+  --transition-fast: 100ms;
+  --transition-base: 150ms;
+  --transition-slow: 250ms;
+  
+  /* Brand colors - consistent across themes */
+  --accent: 138 92 255;           /* #8A5CFF - Primary brand purple */
+  --accent-hover: 156 117 255;    /* #9C75FF - Hover state */
+  --accent-pressed: 116 69 255;   /* #7445FF - Active/pressed */
+  --accent-foreground: 255 255 255; /* White text on accent */
+  
+  /* Alias primary to accent for backward compatibility */
+  --primary: 138 92 255;
+  --primary-hover: 156 117 255;
+  --primary-pressed: 116 69 255;
+  
+  /* Semantic colors - adjusted per theme */
+  --success: 74 222 128;          /* #4ADE80 - green-400 */
+  --warning: 251 191 36;          /* #FBBF24 - yellow-400 */
+  --danger: 239 68 68;            /* #EF4444 - red-500 */
+  
+  /* Background colors */
+  --bg: 26 24 36;                 /* #1A1824 - Default background */
+  --bg-subtle: 28 28 28;          /* #1c1c1c - Subtle background */
+  --bg-muted: 38 38 38;           /* #262626 - Muted background */
+  
+  /* Surface colors */
+  --surface: 28 28 28;            /* #1c1c1c - Default surface */
+  --surface-2: 38 38 38;          /* #262626 - Secondary surface */
+  --surface-3: 48 48 48;          /* #303030 - Tertiary surface */
+  
+  /* Card colors */
+  --card: 28 26 38;               /* #1C1A26 - Card background with purple tint */
+  --card-2: 38 36 48;             /* #262430 - Secondary card with purple tint */
+  
+  /* Text colors */
+  --text: 255 255 255;            /* #FFFFFF - Default text */
+  --text-muted: 163 163 163;      /* #A3A3A3 - Muted text */
+  --text-disabled: 113 113 113;   /* #717171 - Disabled text */
+  
+  /* Borders */
+  --border: 87 71 135;            /* #574787 - Default border with purple tint */
+  --border-hover: 107 91 155;     /* #6B5B9B - Hover border with purple tint */
+  --border-focus: 138 92 255;     /* #8A5CFF - Focus border (unchanged) */
+  
+  /* Overlay */
+  --overlay: 0 0 0;               /* Black with alpha */
+  --overlay-hover: 255 255 255;   /* White with alpha */
+  
+  /* Shadow definitions */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --shadow-accent: 0 0 20px 5px rgb(var(--accent) / 0.25);
+}
+/* GPU-accelerated shimmer using transform */
+@keyframes shine {
+  0% { 
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% { 
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100% { 
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* GPU-accelerated drift animation */
+@keyframes grad-drift {
+  0% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.05) rotate(2deg);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Dark theme (default) */
+:root {
+  color-scheme: dark;
+  
+  /* Backgrounds */
+  --bg: 26 24 36;               /* #1A1824 - Primary background */
+  --bg-subtle: 28 26 38;        /* #1C1A26 - Subtle variation with purple tint */
+  --bg-muted: 32 30 46;         /* #201E2E - Muted background with purple tint */
+  
+  /* Surfaces */
+  --surface: 25 24 36;          /* #191824 - Elevated surface with purple tint */
+  --surface-2: 32 30 46;        /* #201E2E - Secondary surface with purple tint */
+  --surface-3: 39 36 56;        /* #272438 - Tertiary surface with purple tint */
+  
+  /* Overlays */
+  --overlay: 0 0 0;             /* Black overlay, alpha applied in usage */
+  --overlay-hover: 255 255 255; /* White overlay for hover, alpha applied */
+  
+  /* Text */
+  --text: 232 233 237;          /* #E8E9ED - Primary text */
+  --text-muted: 158 160 172;    /* #9EA0AC - Secondary text */
+  --text-disabled: 93 100 112;  /* #5D6470 - Disabled text */
+  
+  /* Borders */
+  --border: 255 255 255;        /* White border, 0.1 alpha in usage */
+  --border-hover: 255 255 255;  /* White border, 0.2 alpha in usage */
+  --border-focus: 138 92 255;   /* Accent border, 0.5 alpha in usage */
+}
+
+/* Light theme */
+.light {
+  color-scheme: light;
+  
+  /* Backgrounds */
+  --bg: 248 250 252;            /* #F8FAFC - gray-50 */
+  --bg-subtle: 241 245 249;     /* #F1F5F9 - gray-100 */
+  --bg-muted: 226 232 240;      /* #E2E8F0 - gray-200 */
+  
+  /* Surfaces */
+  --surface: 255 255 255;       /* #FFFFFF - Pure white */
+  --surface-2: 248 250 252;     /* #F8FAFC - gray-50 */
+  --surface-3: 241 245 249;     /* #F1F5F9 - gray-100 */
+  
+  /* Overlays */
+  --overlay: 0 0 0;             /* Black overlay, alpha applied in usage */
+  --overlay-hover: 0 0 0;       /* Black overlay for hover, alpha applied */
+  
+  /* Text */
+  --text: 15 23 42;             /* #0F172A - slate-900 */
+  --text-muted: 71 85 105;      /* #475569 - slate-600 */
+  --text-disabled: 148 163 184; /* #94A3B8 - slate-400 */
+  
+  /* Borders */
+  --border: 226 232 240;        /* #E2E8F0 - gray-200 */
+  --border-hover: 203 213 225;  /* #CBD5E1 - gray-300 */
+  --border-focus: 138 92 255;   /* Accent, 0.5 alpha in usage */
+  
+  /* Semantic colors - adjusted for light mode */
+  --success: 34 197 94;         /* #22C55E - green-500 */
+  --warning: 234 179 8;         /* #EAB308 - yellow-500 */
+  --danger: 239 68 68;          /* #EF4444 - red-500 */
+}
+
+/* Utility classes for legacy support */
+.bg-bg { background-color: rgb(var(--bg)); }
+.bg-card { background-color: rgb(var(--surface)); }
+.bg-dark { background-color: rgb(var(--bg)); }
+.bg-dark-2 { background-color: rgb(var(--surface-2)); }
+
+.text-fg { color: rgb(var(--text)); }
+.text-muted { color: rgb(var(--text-muted)); }
+
+.bg-primary { background-color: rgb(var(--accent)); }
+.text-primary { color: rgb(var(--accent)); }
+.border-primary { border-color: rgb(var(--accent)); }
+
+.bg-accent { background-color: rgb(var(--accent)); }
+.text-accent { color: rgb(var(--accent)); }
+.border-accent { border-color: rgb(var(--accent)); }
+
+.bg-success { background-color: rgb(var(--success)); }
+.text-success { color: rgb(var(--success)); }
+.border-success { border-color: rgb(var(--success)); }
+
+.bg-danger { background-color: rgb(var(--danger)); }
+.text-danger { color: rgb(var(--danger)); }
+.border-danger { border-color: rgb(var(--danger)); }
+
+.bg-warning { background-color: rgb(var(--warning)); }
+.text-warning { color: rgb(var(--warning)); }
+.border-warning { border-color: rgb(var(--warning)); }
+
+html { 
+  color-scheme: dark;
+  font-family: var(--font-proxima-nova) !important;
+  background-color: rgb(var(--bg));
+}
+body {
+  @apply text-text antialiased;
+  font-family: var(--font-proxima-nova) !important;
+  /* 2026 sleek radial gradient mesh background */
+  background: 
+    radial-gradient(ellipse at 80% -20%, rgba(138, 92, 255, 0.15), transparent 50%),
+    radial-gradient(ellipse at -20% 120%, rgba(138, 92, 255, 0.1), transparent 50%),
+    rgb(var(--bg));
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbars */
+/* Firefox */
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--primary)) rgb(var(--surface));
+}
+/* Prevent iOS zoom on focus by ensuring >=16px controls */
+@media (max-width: 640px) {
+  input, select, textarea, button {
+    font-size: 16px;
+  }
+}
+/* WebKit */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--surface));
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(var(--primary), 0.9), rgba(var(--primary), 0.7));
+  border-radius: 12px;
+  border: 2px solid rgb(var(--surface));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(var(--primary), 1), rgba(var(--primary), 0.85));
+}
+
+/* View Transitions for smooth page changes */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+  animation-name: fade-out-smooth;
+}
+
+::view-transition-new(root) {
+  animation-name: fade-in-smooth;
+}
+
+@keyframes fade-out-smooth {
+  from { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to { 
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fade-in-smooth {
+  from { 
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* Typographic scale utilities */
+  .h1 { font-size: 2.25rem; line-height: 1.05; font-weight: 800; }
+  @media (min-width: 768px) { .h1 { font-size: 3rem } }
+  .h2 { font-size: 1.5rem; line-height: 1.1; font-weight: 700 }
+  @media (min-width: 768px) { .h2 { font-size: 2rem } }
+  .lead { font-size: 1.125rem; color: rgb(var(--text-muted)); }
+
+  /* Safe area padding utility */
+  .pb-safe {
+    padding-bottom: max(1rem, var(--safe-bottom));
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl bg-primary text-white px-4 py-2.5 text-sm font-semibold shadow-[0_0_15px_rgba(138,92,255,0.4)] hover:shadow-[0_0_25px_rgba(138,92,255,0.6)] hover:brightness-110 active:scale-[0.98] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-sm {
+    @apply btn px-3 py-2 text-xs;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-xl text-white px-4 py-2.5 text-sm font-semibold shadow-lg transition-all duration-300 hover:bg-white/10 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white/20 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+    @apply bg-white/5 border border-white/10 backdrop-blur-md;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center rounded-xl text-white px-4 py-2.5 text-sm font-semibold shadow-[0_0_15px_rgba(239,68,68,0.2)] hover:shadow-[0_0_25px_rgba(239,68,68,0.4)] transition-all duration-300 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-danger/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+    background-color: rgb(var(--danger));
+  }
+
+  .card {
+    @apply rounded-2xl bg-white/[0.02] backdrop-blur-xl shadow-2xl border border-white/[0.08] transition-all duration-500 hover:border-white/[0.15] hover:bg-white/[0.03];
+  }
+
+  .container-page {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .input {
+    @apply w-full rounded-xl bg-black/30 border border-white/10 px-4 py-2.5 text-text text-base focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:bg-black/50 transition-all duration-300 backdrop-blur-sm;
+  }
+  .input::placeholder {
+    color: rgb(var(--text-muted));
+  }
+
+  .label {
+    @apply block text-sm font-medium mb-1.5;
+    color: rgb(var(--text));
+    opacity: 0.9;
+  }
+}
+
+/* SweetAlert2 Custom Styling */
+.swal2-popup {
+  border-radius: 1rem !important;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2) !important;
+}
+
+.swal2-title {
+  font-family: var(--font-proxima-nova) !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: rgb(var(--text)) !important;
+}
+
+.swal2-html-container {
+  font-family: var(--font-proxima-nova) !important;
+  color: rgb(var(--text-muted)) !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+  border-radius: 0.75rem !important;
+  font-weight: 600 !important;
+  padding: 0.625rem 1.25rem !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1) !important;
+  font-size: 0.95rem !important;
+}
+
+.swal2-icon {
+  border-width: 3px !important;
+}
+
+/* Make the success icon match the primary/accent color */
+.swal2-icon.swal2-success {
+  border-color: rgb(var(--primary)) !important;
+  color: rgb(var(--primary)) !important;
+}
+
+.swal2-icon.swal2-success [class^=swal2-success-line] {
+  background-color: rgb(var(--primary)) !important;
+}
+
+/* Toast positioning */
+.swal2-container.swal2-top-end {
+  top: 1rem !important;
+  right: 1rem !important;
+}
+
+.swal2-toast {
+  border-radius: 1rem !important;
+  padding: 1rem !important;
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3) !important;
+}
+
+/* Homepage animations */
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+/* Shimmer/shine for hero heading */
+@keyframes shine {
+  0% { background-position: 200% 0; }
+  100% { background-position: -50% 0; }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background-image: radial-gradient(var(--tw-gradient-stops));
+}
+
+/* GPU-accelerated cipher scroll using transform */
+@keyframes cipher-scroll {
+  from { 
+    transform: translateX(0%);
+  }
+  to { 
+    transform: translateX(-50%);
+  }
+}
+
+/* Logo hover animations (wink + smirk) */
+.logo {
+  display: inline-block;
+  height: 1.5rem;
+  cursor: pointer;
+}
+/* Animation behavior is shared with .logo-anim, which does NOT impose size */
+.logo-anim circle,
+.logo-anim path,
+.logo circle,
+.logo path {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.logo:hover circle,
+.logo-anim:hover circle {
+  animation: wink 0.45s ease-in-out 1;
+}
+.logo:hover path,
+.logo-anim:hover path {
+  animation: smirk 0.6s ease-in-out 1;
+}
+/* Auto-run the same animations once on load when the SVG has the 'boot' class */
+.logo.boot circle,
+.logo-anim.boot circle {
+  animation: wink 0.45s ease-in-out 1;
+}
+.logo.boot path,
+.logo-anim.boot path {
+  animation: smirk 0.6s ease-in-out 1;
+}
+@keyframes wink {
+  0% { transform: scaleY(1); }
+  30% { transform: scaleY(0.1); }
+  50% { transform: scaleY(0.1); }
+  80% { transform: scaleY(1.05); }
+  100% { transform: scaleY(1); }
+}
+@keyframes smirk {
+  0%   { transform: rotate(0deg) translateY(0); }
+  30%  { transform: rotate(-2deg) translateY(1px); }
+  50%  { transform: rotate(3deg) translateY(-2px); }
+  80%  { transform: rotate(-1deg) translateY(0); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+/* Preloader Animations */
+@keyframes wink-left {
+  0%, 75%, 100% { 
+    transform: scaleY(1) scaleX(1); 
+  }
+  85% { 
+    transform: scaleY(0.1) scaleX(1.3); 
+  }
+}
+
+@keyframes wink-right {
+  0%, 65%, 100% { 
+    transform: scaleY(1) scaleX(1); 
+  }
+  75% { 
+    transform: scaleY(0.1) scaleX(1.3); 
+  }
+}
+
+/* Grin animation - mouth grows wider */
+@keyframes grin {
+  0%, 85%, 100% { 
+    transform: scaleX(1); 
+  }
+  90% { 
+    transform: scaleX(1.8); 
+  }
+}
+
+/* Tailwind animation classes for preloader */
+.animate-wink-left {
+  animation: wink-left 0.8s ease-in-out;
+}
+
+.animate-wink-right {
+  animation: wink-right 1.2s ease-in-out;
+}
+
+.animate-grin {
+  animation: grin 1s ease-in-out;
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-wink-right {
+  animation: wink-right 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 4s linear infinite;
+}

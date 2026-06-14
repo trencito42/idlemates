@@ -1,0 +1,68 @@
+/* Composited Animation Utilities */
+.animate-gradient-optimized {
+  background-size: 200% 200%;
+  animation: gradient-optimized 8s ease infinite;
+  will-change: transform;
+}
+
+.animate-cipher-optimized {
+  animation: cipher-scroll-optimized 12s linear infinite;
+  will-change: transform;
+}
+
+.animate-grad-drift-optimized {
+  animation: grad-drift-optimized 8s linear infinite;
+  will-change: transform;
+}
+
+/* Optimized keyframes using transform/opacity */
+@keyframes gradient-optimized {
+  0%, 100% { 
+    transform: translateX(0%) scale(1);
+    opacity: 1;
+  }
+  50% { 
+    transform: translateX(50%) scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+@keyframes cipher-scroll-optimized {
+  0% { 
+    transform: translateX(0%);
+  }
+  100% { 
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes grad-drift-optimized {
+  0% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% { 
+    transform: scale(1.05) rotate(2deg);
+    opacity: 0.9;
+  }
+  100% { 
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* Helper classes for hardware acceleration */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .animate-gradient-optimized,
+  .animate-cipher-optimized,
+  .animate-grad-drift-optimized {
+    animation: none;
+  }
+}

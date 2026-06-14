@@ -1,0 +1,339 @@
+{
+  "timestamp": "2025-10-20T18:51:15.408Z",
+  "summary": {
+    "passed": 20,
+    "warnings": 0,
+    "failed": 0,
+    "total": 20,
+    "score": 100
+  },
+  "details": [
+    {
+      "page": "/",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: IdleMates — The Cloud Buddy for Steam",
+        "Description: Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego...",
+        "Branding found: cloud buddy, your games never sleep, we grind while you shine, idle smarter, not harder, lazy gamer alter-ego"
+      ],
+      "metadata": {
+        "title": "IdleMates — The Cloud Buddy for Steam",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:title": "IdleMates — The Cloud Buddy for Steam",
+        "og:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:site_name": "IdleMates",
+        "og:image": "https://idlemat.es/api/og",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "IdleMates",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "IdleMates — The Cloud Buddy for Steam",
+        "twitter:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "twitter:image": "https://idlemat.es/api/og"
+      },
+      "branding": [
+        "cloud buddy",
+        "your games never sleep",
+        "we grind while you shine",
+        "idle smarter, not harder",
+        "lazy gamer alter-ego"
+      ]
+    },
+    {
+      "page": "/pricing",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: Pricing — IdleMates — IdleMates",
+        "Description: Your games never sleep. Simple pricing for your cloud buddy—we&#x27;re upfront about costs, just lik...",
+        "Branding found: cloud buddy, your games never sleep, we grind while you shine"
+      ],
+      "metadata": {
+        "title": "Pricing — IdleMates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "Your games never sleep. Simple pricing for your cloud buddy—we&#x27;re upfront about costs, just like good friends should be.",
+        "og:title": "Pricing — IdleMates",
+        "og:description": "Your games never sleep. Simple pricing for your cloud buddy—we&#x27;re upfront about costs, just like good friends should be.",
+        "og:image": "https://idlemat.es/api/og?title=Pricing%20%E2%80%94%20IdleMates&amp;subtitle=Simple%2C%20honest%20pricing%20for%20your%20cloud%20buddy%20on%20Steam.%20Start%20free%20and%20upgrade%20anytime.",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Pricing — IdleMates",
+        "twitter:description": "Your games never sleep. Simple pricing for your cloud buddy—we&#x27;re upfront about costs, just like good friends should be.",
+        "twitter:image": "https://idlemat.es/api/og?title=Pricing%20%E2%80%94%20IdleMates&amp;subtitle=Simple%2C%20honest%20pricing%20for%20your%20cloud%20buddy%20on%20Steam.%20Start%20free%20and%20upgrade%20anytime."
+      },
+      "branding": [
+        "cloud buddy",
+        "your games never sleep",
+        "we grind while you shine"
+      ]
+    },
+    {
+      "page": "/faq",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: FAQ — IdleMates — IdleMates",
+        "Description: We&#x27;re your lazy gamer alter-ego. Answers to setup, plans, safety, and support for the cloud bud...",
+        "Branding found: cloud buddy, we grind while you shine, lazy gamer alter-ego"
+      ],
+      "metadata": {
+        "title": "FAQ — IdleMates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "We&#x27;re your lazy gamer alter-ego. Answers to setup, plans, safety, and support for the cloud buddy that plays for you.",
+        "og:title": "FAQ — IdleMates",
+        "og:description": "We&#x27;re your lazy gamer alter-ego. Answers to setup, plans, safety, and support for the cloud buddy that plays for you.",
+        "og:image": "https://idlemat.es/api/og?title=FAQ%20%E2%80%94%20IdleMates&amp;subtitle=We%27re%20your%20lazy%20gamer%20alter-ego.%20Get%20answers%20about%20your%20cloud%20buddy.",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "FAQ — IdleMates",
+        "twitter:description": "We&#x27;re your lazy gamer alter-ego. Answers to setup, plans, safety, and support for the cloud buddy that plays for you.",
+        "twitter:image": "https://idlemat.es/api/og?title=FAQ%20%E2%80%94%20IdleMates&amp;subtitle=We%27re%20your%20lazy%20gamer%20alter-ego.%20Get%20answers%20about%20your%20cloud%20buddy."
+      },
+      "branding": [
+        "cloud buddy",
+        "we grind while you shine",
+        "lazy gamer alter-ego"
+      ]
+    },
+    {
+      "page": "/security",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: Security — IdleMates — IdleMates",
+        "Description: How IdleMates protects your data: AES-256-GCM at rest, envelope encryption with a 32-byte master key...",
+        "Branding found: cloud buddy, we grind while you shine"
+      ],
+      "metadata": {
+        "title": "Security — IdleMates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "How IdleMates protects your data: AES-256-GCM at rest, envelope encryption with a 32-byte master key, versioned blobs with IV and tag.",
+        "og:title": "Security — IdleMates",
+        "og:description": "How IdleMates protects your data: AES-256-GCM at rest, envelope encryption with a 32-byte master key, versioned blobs with IV and tag.",
+        "og:image": "https://idlemat.es/api/og?title=Security%20%E2%80%94%20IdleMates&amp;subtitle=Military-grade%20encryption%20keeps%20your%20Steam%20account%20safe",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Security — IdleMates",
+        "twitter:description": "How IdleMates protects your data: AES-256-GCM at rest, envelope encryption with a 32-byte master key, versioned blobs with IV and tag.",
+        "twitter:image": "https://idlemat.es/api/og?title=Security%20%E2%80%94%20IdleMates&amp;subtitle=Military-grade%20encryption%20keeps%20your%20Steam%20account%20safe"
+      },
+      "branding": [
+        "cloud buddy",
+        "we grind while you shine"
+      ]
+    },
+    {
+      "page": "/news",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: News &amp; Updates — IdleMates",
+        "Description: Latest product updates, improvements, and announcements from your cloud buddy. Stay updated on new f...",
+        "Branding found: cloud buddy, we grind while you shine"
+      ],
+      "metadata": {
+        "title": "News &amp; Updates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "Latest product updates, improvements, and announcements from your cloud buddy. Stay updated on new features, game support, and platform enhancements.",
+        "og:title": "News &amp; Updates — IdleMates",
+        "og:description": "Latest product updates, improvements, and announcements from your cloud buddy. Stay updated on new features, game support, and platform enhancements.",
+        "og:image": "https://idlemat.es/api/og?title=News%20%26%20Updates&amp;subtitle=Latest%20product%20updates%2C%20improvements%2C%20and%20announcements",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "IdleMates News &amp; Updates",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "News &amp; Updates — IdleMates",
+        "twitter:description": "Latest product updates, improvements, and announcements from your cloud buddy. Stay updated on new features, game support, and platform enhancements.",
+        "twitter:image": "https://idlemat.es/api/og?title=News%20%26%20Updates&amp;subtitle=Latest%20product%20updates%2C%20improvements%2C%20and%20announcements"
+      },
+      "branding": [
+        "cloud buddy",
+        "we grind while you shine"
+      ]
+    },
+    {
+      "page": "/auth/login",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: IdleMates — The Cloud Buddy for Steam",
+        "Description: Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego...",
+        "Branding found: cloud buddy, your games never sleep, we grind while you shine, idle smarter, not harder, lazy gamer alter-ego"
+      ],
+      "metadata": {
+        "title": "IdleMates — The Cloud Buddy for Steam",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:title": "IdleMates — The Cloud Buddy for Steam",
+        "og:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:site_name": "IdleMates",
+        "og:image": "https://idlemat.es/api/og",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "IdleMates",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "IdleMates — The Cloud Buddy for Steam",
+        "twitter:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "twitter:image": "https://idlemat.es/api/og"
+      },
+      "branding": [
+        "cloud buddy",
+        "your games never sleep",
+        "we grind while you shine",
+        "idle smarter, not harder",
+        "lazy gamer alter-ego"
+      ]
+    },
+    {
+      "page": "/auth/register",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: IdleMates — The Cloud Buddy for Steam",
+        "Description: Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego...",
+        "Branding found: cloud buddy, your games never sleep, we grind while you shine, idle smarter, not harder, lazy gamer alter-ego"
+      ],
+      "metadata": {
+        "title": "IdleMates — The Cloud Buddy for Steam",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:title": "IdleMates — The Cloud Buddy for Steam",
+        "og:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:site_name": "IdleMates",
+        "og:image": "https://idlemat.es/api/og",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "IdleMates",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "IdleMates — The Cloud Buddy for Steam",
+        "twitter:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "twitter:image": "https://idlemat.es/api/og"
+      },
+      "branding": [
+        "cloud buddy",
+        "your games never sleep",
+        "we grind while you shine",
+        "idle smarter, not harder",
+        "lazy gamer alter-ego"
+      ]
+    },
+    {
+      "page": "/legal",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: Legal — IdleMates — IdleMates",
+        "Description: Legal information for IdleMates including Privacy Policy and Terms of Service....",
+        "Branding found: cloud buddy, we grind while you shine"
+      ],
+      "metadata": {
+        "title": "Legal — IdleMates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "Legal information for IdleMates including Privacy Policy and Terms of Service.",
+        "og:title": "Legal — IdleMates",
+        "og:description": "Legal information for IdleMates including Privacy Policy and Terms of Service.",
+        "og:image": "https://idlemat.es/api/og?title=Legal%20%E2%80%94%20IdleMates&amp;subtitle=Privacy%20Policy%2C%20Terms%20of%20Service%20and%20legal%20information",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "Legal — IdleMates",
+        "twitter:description": "Legal information for IdleMates including Privacy Policy and Terms of Service.",
+        "twitter:image": "https://idlemat.es/api/og?title=Legal%20%E2%80%94%20IdleMates&amp;subtitle=Privacy%20Policy%2C%20Terms%20of%20Service%20and%20legal%20information"
+      },
+      "branding": [
+        "cloud buddy",
+        "we grind while you shine"
+      ]
+    },
+    {
+      "page": "/legal/privacy",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: Privacy Policy — IdleMates — IdleMates",
+        "Description: How IdleMates collects, stores, and protects your data. GDPR-compliant and security-first....",
+        "Branding found: cloud buddy, your games never sleep, we grind while you shine, idle smarter, not harder, lazy gamer alter-ego"
+      ],
+      "metadata": {
+        "title": "Privacy Policy — IdleMates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "How IdleMates collects, stores, and protects your data. GDPR-compliant and security-first.",
+        "og:title": "IdleMates — The Cloud Buddy for Steam",
+        "og:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:site_name": "IdleMates",
+        "og:image": "https://idlemat.es/api/og",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "IdleMates",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "IdleMates — The Cloud Buddy for Steam",
+        "twitter:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "twitter:image": "https://idlemat.es/api/og"
+      },
+      "branding": [
+        "cloud buddy",
+        "your games never sleep",
+        "we grind while you shine",
+        "idle smarter, not harder",
+        "lazy gamer alter-ego"
+      ]
+    },
+    {
+      "page": "/legal/tos",
+      "status": 200,
+      "errors": [],
+      "warnings": [],
+      "successes": [
+        "Title: Terms of Service — IdleMates — IdleMates",
+        "Description: IdleMates Terms of Service for usage, billing, refunds, and acceptable use....",
+        "Branding found: cloud buddy, your games never sleep, we grind while you shine, idle smarter, not harder, lazy gamer alter-ego"
+      ],
+      "metadata": {
+        "title": "Terms of Service — IdleMates — IdleMates",
+        "viewport": "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no",
+        "theme-color": "#8A5CFF",
+        "description": "IdleMates Terms of Service for usage, billing, refunds, and acceptable use.",
+        "og:title": "IdleMates — The Cloud Buddy for Steam",
+        "og:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "og:site_name": "IdleMates",
+        "og:image": "https://idlemat.es/api/og",
+        "og:image:width": "1200",
+        "og:image:height": "630",
+        "og:image:alt": "IdleMates",
+        "og:type": "website",
+        "twitter:card": "summary_large_image",
+        "twitter:title": "IdleMates — The Cloud Buddy for Steam",
+        "twitter:description": "Your games never sleep. IdleMates is your cloud buddy for Steam—we&#x27;re your lazy gamer alter-ego. Idle smarter, not harder.",
+        "twitter:image": "https://idlemat.es/api/og"
+      },
+      "branding": [
+        "cloud buddy",
+        "your games never sleep",
+        "we grind while you shine",
+        "idle smarter, not harder",
+        "lazy gamer alter-ego"
+      ]
+    }
+  ]
+}
